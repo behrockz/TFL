@@ -18,7 +18,7 @@ namespace TFLDataReader.Client
             client = new RestClient(uri);
         }
 
-        public IEnumerable<ITflRawData> GetDataForAroundHere(TflRequest tflRequest, ReturnList returnList)
+        public IEnumerable<ITflRawData> GetDataForAroundHere(ITflRequest tflRequest, ReturnList returnList)
         {
             var request = tflRequest.GetRequest(returnList);
 
