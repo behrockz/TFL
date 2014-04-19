@@ -5,13 +5,13 @@ using TFLDataReader.Unity;
 
 namespace TFLDataReader.Client
 {
-    class TflClientGenericDependencyRegister<T> : IGenericDependencyRegister<T> where T : ITflRawData
+    class TflClientGenericDependencyRegister<T> : IGenericDependencyRegister<T> where T : ITflRawData , new()
     {
         public void Register(UnityContainer container)
         {
-            container.RegisterType<ITflClient, TflClient>();
+            container.RegisterType<ITflClient<T>, TflClient<T>>();
             container.RegisterType<ITflResponseParser<T>, TflResponseParser<T>>();
-            container.RegisterType(typeof(IRecordParser<T>), typeof(TflRawDataParser));
+            container.RegisterType<IRawRecordParser<T>, TflRawRecordParser<T>>();
         }
     }
 }

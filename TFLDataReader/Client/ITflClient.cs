@@ -3,8 +3,8 @@ using TFLDataReader.Data;
 
 namespace TFLDataReader.Client
 {
-    interface ITflClient
+    interface ITflClient<out T> where T : ITflRawData
     {
-        IEnumerable<ITflRawData> GetDataForAroundHere(ITflRequest tflRequest, ReturnList returnList); 
+        IEnumerable<T> GetData(ITflRequest tflRequest, ReturnList returnList); 
     }
 }

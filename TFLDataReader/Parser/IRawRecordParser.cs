@@ -3,7 +3,7 @@ using TFLDataReader.Data;
 
 namespace TFLDataReader.Parser
 {
-    public interface IRecordParser<out T> where T : ITflRawData
+    public interface IRawRecordParser<out T> where T : ITflRawData, new()
     {
         T Parse(string[] record, DateTime timeStamp);
     }

@@ -6,19 +6,19 @@ using TFLDataReader.Parser;
 
 namespace TFLDataReader.Client
 {
-    class TflClient : ITflClient
+    class TflClient<T> : ITflClient<T> where T : ITflRawData, new()
     {
         private readonly RestClient client;
-        private readonly ITflResponseParser<ITflRawData> tflResponseParser;
+        private readonly ITflResponseParser<T> tflResponseParser;
 
-        public TflClient(ITflResponseParser<ITflRawData> tflResponseParser)
+        public TflClient(ITflResponseParser<T> tflResponseParser)
         {
             this.tflResponseParser = tflResponseParser;
             string uri = ConfigurationManager.AppSettings["TflUri"]; 
             client = new RestClient(uri);
         }
 
-        public IEnumerable<ITflRawData> GetDataForAroundHere(ITflRequest tflRequest, ReturnList returnList)
+        public IEnumerable<T> GetData(ITflRequest tflRequest, ReturnList returnList)
         {
             var request = tflRequest.GetRequest(returnList);
 

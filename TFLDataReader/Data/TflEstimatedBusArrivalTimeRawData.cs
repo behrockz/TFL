@@ -1,8 +1,9 @@
 ﻿using System;
+using TFLDataReader.Parser;
 
 namespace TFLDataReader.Data
 {
-    public class TflRawData : ITflRawData
+    public class TflEstimatedBusArrivalTimeRawData : ITflRawData
     {
         public string StopName { get; private set; }
         public double Latitude { get; private set; }
@@ -13,15 +14,15 @@ namespace TFLDataReader.Data
         public DateTime EstimatedArrivalTime { get; private set; }
         public DateTime TimeStamp { get; private set; }
 
-        public TflRawData(string stopName, double latitude, double longitude, string busName, int direction, string vehicleRegistrationNumber, DateTime estimatedArrivalTime, DateTime timeStamp)
+        public void Initialize(string[] record, DateTime timeStamp)
         {
-            StopName = stopName;
-            Latitude = latitude;
-            Longitude = longitude;
-            BusName = busName;
-            Direction = direction;
-            VehicleRegistrationNumber = vehicleRegistrationNumber;
-            EstimatedArrivalTime = estimatedArrivalTime;
+            StopName = record[1];
+            Latitude = Convert.ToDouble(record[2]);
+            Longitude = Convert.ToDouble(record[3]);
+            BusName = record[4];
+            Direction = Convert.ToInt32(record[5]);
+            VehicleRegistrationNumber = record[6];
+            EstimatedArrivalTime = ParserUtility.ConvertUnixTimeToDateTime(record[7]);
             TimeStamp = timeStamp;
         }
     }

@@ -6,13 +6,13 @@ using TFLDataReader.Data;
 
 namespace TFLDataReader.Parser
 {
-    class TflResponseParser<T> : ITflResponseParser<T> where T : ITflRawData
+    class TflResponseParser<T> : ITflResponseParser<T> where T : ITflRawData, new()
     {
         private readonly CsvFactory csvfactory;
         private readonly CsvConfiguration csvConfiguration;
-        private readonly IRecordParser<T> parser;
+        private readonly IRawRecordParser<T> parser;
 
-        public TflResponseParser(IRecordParser<T> parser)
+        public TflResponseParser(IRawRecordParser<T> parser)
         {
             this.parser = parser;
             csvfactory = new CsvFactory();
