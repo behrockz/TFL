@@ -1,4 +1,6 @@
-﻿using Microsoft.Practices.Unity;
+﻿using System.Configuration;
+using Microsoft.Practices.Unity;
+using RestSharp;
 using TFLDataReader.Data;
 using TFLDataReader.Parser;
 using TFLDataReader.Unity;
@@ -12,6 +14,9 @@ namespace TFLDataReader.Client
             container.RegisterType<ITflClient<T>, TflClient<T>>();
             container.RegisterType<ITflResponseParser<T>, TflResponseParser<T>>();
             container.RegisterType<IRawRecordParser<T>, TflRawRecordParser<T>>();
+
+            var baseUri = ConfigurationManager.AppSettings["TflUri"];
+            container.RegisterType<IRestClient, RestClient>(new InjectionConstructor(baseUri));
         }
     }
 }

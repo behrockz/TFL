@@ -9,14 +9,13 @@ namespace TFLDataReader.Client
 {
     internal class TflClient<T> : ITflClient<T> where T : ITflRawData, new()
     {
-        private readonly RestClient client;
+        private readonly IRestClient client;
         private readonly ITflResponseParser<T> tflResponseParser;
 
-        public TflClient(ITflResponseParser<T> tflResponseParser)
+        public TflClient(ITflResponseParser<T> tflResponseParser, IRestClient client)
         {
             this.tflResponseParser = tflResponseParser;
-            string uri = ConfigurationManager.AppSettings["TflUri"]; 
-            client = new RestClient(uri);
+            this.client = client;
         }
 
         public IEnumerable<T> GetData(ITflRequest tflRequest, ReturnList returnList)
