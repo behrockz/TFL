@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\TFLDataReader\bin\Debug\CsvHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.Unity">
       <HintPath>..\TFLDataReader\bin\Debug\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
@@ -63,9 +67,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Parser\TflResponseParserTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Request\TflRequestTest.cs" />
     <Compile Include="TestTflRawDataStub.cs" />
-    <Compile Include="TflClientTest.cs" />
-    <Compile Include="TflClientGenericDependencyRegisterTest.cs" />
+    <Compile Include="Client\TflClientTest.cs" />
+    <Compile Include="Client\TflClientGenericDependencyRegisterTest.cs" />
+    <Compile Include="Data\TflEstimatedBusArrivalTimeRawDataTest.cs" />
+    <Compile Include="Parser\ParserUtilityTest.cs" />
+    <Compile Include="Parser\TflRawRecordParser.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

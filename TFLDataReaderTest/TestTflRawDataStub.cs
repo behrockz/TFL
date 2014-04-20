@@ -8,7 +8,7 @@ namespace TFLDataReaderTest
         public DateTime TimeStamp { get; private set; }
         public void Initialize(string[] record, DateTime timeStamp)
         {
-            throw new NotImplementedException();
+            TimeStamp = timeStamp;
         }
     }
 }

@@ -16,13 +16,13 @@ namespace TFLDataReader.Data
 
         public void Initialize(string[] record, DateTime timeStamp)
         {
-            StopName = record[1];
-            Latitude = Convert.ToDouble(record[2]);
-            Longitude = Convert.ToDouble(record[3]);
-            BusName = record[4];
-            Direction = Convert.ToInt32(record[5]);
-            VehicleRegistrationNumber = record[6];
-            EstimatedArrivalTime = ParserUtility.ConvertUnixTimeToDateTime(record[7]);
+            StopName = ParserUtility.Trim(record[1]);
+            Latitude = Convert.ToDouble(ParserUtility.Trim(record[2]));
+            Longitude = Convert.ToDouble(ParserUtility.Trim(record[3]));
+            BusName = ParserUtility.Trim(record[4]);
+            Direction = Convert.ToInt32(ParserUtility.Trim(record[5]));
+            VehicleRegistrationNumber = ParserUtility.Trim(record[6]);
+            EstimatedArrivalTime = ParserUtility.ConvertUnixTimeToDateTime(ParserUtility.Trim(record[7]));
             TimeStamp = timeStamp;
         }
     }
