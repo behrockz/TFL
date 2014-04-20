@@ -3,10 +3,11 @@ using System.Configuration;
 using RestSharp;
 using TFLDataReader.Data;
 using TFLDataReader.Parser;
+using TFLDataReader.Request;
 
 namespace TFLDataReader.Client
 {
-    class TflClient<T> : ITflClient<T> where T : ITflRawData, new()
+    internal class TflClient<T> : ITflClient<T> where T : ITflRawData, new()
     {
         private readonly RestClient client;
         private readonly ITflResponseParser<T> tflResponseParser;

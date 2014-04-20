@@ -2,11 +2,12 @@
 using System.Configuration;
 using System.Linq;
 using RestSharp;
+using TFLDataReader.Client;
 using TFLDataReader.Data;
 
-namespace TFLDataReader.Client
+namespace TFLDataReader.Request
 {
-    class TflRequest : ITflRequest
+    public class TflRequest : ITflRequest
     {
         private readonly string resource = ConfigurationManager.AppSettings["TflResource"];
 

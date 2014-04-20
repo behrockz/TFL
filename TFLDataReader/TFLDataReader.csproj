@@ -60,12 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\TflEstimatedBusArrivalTimeRawData2.cs" />
     <Compile Include="Data\ITflRawData.cs" />
     <Compile Include="Unity\IDependencyRegister.cs" />
     <Compile Include="Unity\IGenericDependencyRegister.cs" />
     <Compile Include="Client\ITflClient.cs" />
-    <Compile Include="Client\ITflRequest.cs" />
+    <Compile Include="Request\ITflRequest.cs" />
     <Compile Include="Parser\IRawRecordParser.cs" />
     <Compile Include="Parser\ITflResponseParser.cs" />
     <Compile Include="Parser\ParserUtility.cs" />
@@ -76,7 +75,7 @@
     <Compile Include="Client\TflClient.cs" />
     <Compile Include="Data\TflEstimatedBusArrivalTimeRawData.cs" />
     <Compile Include="Client\TflClientGenericDependencyRegister.cs" />
-    <Compile Include="Client\TflRequest.cs" />
+    <Compile Include="Request\TflRequest.cs" />
     <Compile Include="Parser\TflResponseParser.cs" />
   </ItemGroup>
   <ItemGroup>

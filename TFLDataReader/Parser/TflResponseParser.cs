@@ -6,7 +6,7 @@ using TFLDataReader.Data;
 
 namespace TFLDataReader.Parser
 {
-    class TflResponseParser<T> : ITflResponseParser<T> where T : ITflRawData, new()
+    internal class TflResponseParser<T> : ITflResponseParser<T> where T : ITflRawData, new()
     {
         private readonly CsvFactory csvfactory;
         private readonly CsvConfiguration csvConfiguration;

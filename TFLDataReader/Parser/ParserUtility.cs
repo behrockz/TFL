@@ -2,7 +2,7 @@
 
 namespace TFLDataReader.Parser
 {
-    public static class ParserUtility
+    internal static class ParserUtility
     {
         public static DateTime ConvertUnixTimeToDateTime(string unixTime)
         {

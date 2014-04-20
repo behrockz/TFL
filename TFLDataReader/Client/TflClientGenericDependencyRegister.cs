@@ -5,7 +5,7 @@ using TFLDataReader.Unity;
 
 namespace TFLDataReader.Client
 {
-    class TflClientGenericDependencyRegister<T> : IGenericDependencyRegister<T> where T : ITflRawData , new()
+    public class TflClientGenericDependencyRegister<T> : IGenericDependencyRegister<T> where T : ITflRawData , new()
     {
         public void Register(UnityContainer container)
         {

@@ -1,7 +1,7 @@
 ﻿using RestSharp;
 using TFLDataReader.Data;
 
-namespace TFLDataReader.Client
+namespace TFLDataReader.Request
 {
     public interface ITflRequest
     {
