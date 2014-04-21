@@ -6,6 +6,6 @@ namespace TFLDataReader.Client
 {
     public interface ITflClient<out T> where T : ITflRawData
     {
-        IEnumerable<T> GetData(ITflRequest tflRequest, ReturnList returnList); 
+        IEnumerable<T> GetData(ITflRequest tflRequest); 
     }
 }

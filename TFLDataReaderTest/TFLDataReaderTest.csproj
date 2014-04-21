@@ -70,6 +70,7 @@
     <Compile Include="Parser\TflResponseParserTest.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Request\FilterParameter.cs" />
     <Compile Include="Request\TflRequestTest.cs" />
     <Compile Include="TestTflRawDataStub.cs" />
     <Compile Include="Client\TflClientTest.cs" />

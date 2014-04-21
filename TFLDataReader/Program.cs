@@ -14,10 +14,9 @@ namespace TFLDataReader
             new TflClientGenericDependencyRegister<TflEstimatedBusArrivalTimeRawData>().Register(unity);
             var client = unity.Resolve<ITflClient<TflEstimatedBusArrivalTimeRawData>>();
 
-            var data = client.GetData(new TflRequest(),
-                                                   ReturnList.StopPointName | ReturnList.DirectionID |
-                                                   ReturnList.EstimatedTime | ReturnList.Latitude | ReturnList.LineName |
-                                                   ReturnList.Longitude | ReturnList.RegistrationNumber).ToArray();
+            var tflRequest = new TflRequest(new FilterParameter(TflEstimatedBusArrivalTimeRawData.ReturnList));
+            
+            var data = client.GetData(tflRequest).ToArray();
         }
     }
 }

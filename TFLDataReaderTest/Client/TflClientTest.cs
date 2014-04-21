@@ -18,10 +18,8 @@ namespace TFLDataReaderTest
             var restClient = MockRepository.GenerateMock<IRestClient>();
             var request = MockRepository.GenerateMock<ITflRequest>();
             var parser = MockRepository.GenerateMock<ITflResponseParser<TestTflRawDataStub>>();
-
-            const ReturnList returnList = ReturnList.DirectionID | ReturnList.LineID;
-
-            request.Expect(r => r.GetRequest(returnList)).Return(null);
+            
+            request.Expect(r => r.GetRequest()).Return(null);
             var response = new RestResponse();
             response.Content = "";
             restClient.Expect(r => r.Execute(null)).Return(response);
@@ -30,7 +28,7 @@ namespace TFLDataReaderTest
 
 
             var client = new TflClient<TestTflRawDataStub>(parser, restClient);
-            var result = client.GetData(request, returnList).ToArray();
+            var result = client.GetData(request).ToArray();
             Assert.AreEqual(result.Length, 1);
             Assert.AreEqual(result[0], testTflRawDataStub);
         }

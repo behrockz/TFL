@@ -5,6 +5,6 @@ namespace TFLDataReader.Request
 {
     public interface ITflRequest
     {
-        RestRequest GetRequest(ReturnList returnList);
+        RestRequest GetRequest();
     }
 }

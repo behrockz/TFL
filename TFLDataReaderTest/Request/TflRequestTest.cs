@@ -11,8 +11,6 @@ namespace TFLDataReaderTest.Request
         [Test]
         public void GetRequest()
         {
-            var req = new TflRequest();
-
             const ReturnList returnList = ReturnList.BaseVersion |
                                           ReturnList.Bearing |
                                           ReturnList.DestinationName |
@@ -42,7 +40,9 @@ namespace TFLDataReaderTest.Request
                                           ReturnList.VehicleID |
                                           ReturnList.VisitNumber;
 
-            var restReq = req.GetRequest(returnList);
+            var req = new TflRequest(new FilterParameter(returnList));
+
+            var restReq = req.GetRequest();
             var enumType = typeof (ReturnList);
 
             foreach (var s in ((string)restReq.Parameters[0].Value).Split(",".ToCharArray()))

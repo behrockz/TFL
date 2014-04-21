@@ -18,9 +18,9 @@ namespace TFLDataReader.Client
             this.client = client;
         }
 
-        public IEnumerable<T> GetData(ITflRequest tflRequest, ReturnList returnList)
+        public IEnumerable<T> GetData(ITflRequest tflRequest)
         {
-            var request = tflRequest.GetRequest(returnList);
+            var request = tflRequest.GetRequest();
 
             var response = client.Execute(request);
 

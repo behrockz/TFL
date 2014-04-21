@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using RestSharp;
@@ -10,30 +11,29 @@ namespace TFLDataReader.Request
     public class TflRequest : ITflRequest
     {
         private readonly string resource = ConfigurationManager.AppSettings["TflResource"];
+        private readonly IRequestParameter[] requestparameters;
 
-        public RestRequest GetRequest(ReturnList returnList)
+        public TflRequest(params IRequestParameter[] requestparameters)
+        {
+            this.requestparameters = requestparameters;
+        }
+
+        public RestRequest GetRequest()
         {
             var request = new RestRequest(resource, Method.GET);
 
-            var parameter = new Parameter
+            foreach (var requestparameter in requestparameters)
+            {
+                var parameter = new Parameter
                 {
-                    Name = "ReturnList",
+                    Name = requestparameter.Name,
                     Type = ParameterType.QueryString,
-                    Value = GetReturnList(returnList)
+                    Value = requestparameter.Value
                 };
-
-            request.Parameters.Add(parameter);
+                request.Parameters.Add(parameter);
+            }
 
             return request;
-        }
-
-        private string GetReturnList(ReturnList returnList)
-        {
-            var list = Enumerable.Range(0, Enum.GetNames(typeof (ReturnList)).Length)
-                      .Select(p => (ReturnList)Math.Pow(2, p))
-                      .Where(e => (returnList & e) == e);
-
-            return string.Join(",", list);
         }
     }
 }

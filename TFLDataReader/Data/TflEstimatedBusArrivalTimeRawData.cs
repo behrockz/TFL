@@ -25,5 +25,13 @@ namespace TFLDataReader.Data
             EstimatedArrivalTime = ParserUtility.ConvertUnixTimeToDateTime(ParserUtility.Trim(record[7]));
             TimeStamp = timeStamp;
         }
+
+        public static ReturnList ReturnList 
+        {
+            get
+            {
+                return ReturnList.StopPointName | ReturnList.DirectionID | ReturnList.EstimatedTime | ReturnList.Latitude | ReturnList.LineName | ReturnList.Longitude | ReturnList.RegistrationNumber;
+            }
+        }
     }
 }

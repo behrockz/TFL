@@ -61,6 +61,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ITflRawData.cs" />
+    <Compile Include="Request\FilterParameter.cs" />
+    <Compile Include="Request\IRequestParameter.cs" />
     <Compile Include="Unity\IDependencyRegister.cs" />
     <Compile Include="Unity\IGenericDependencyRegister.cs" />
     <Compile Include="Client\ITflClient.cs" />
